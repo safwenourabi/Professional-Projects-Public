@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}">
+</head>
+<style></style>
+<body>
+    <div class="background">
+        <video autoplay loop muted plays-inline type = "video/mp4" class="background-clip">
+          <source src="http://www.samm-automation.com/video/samm_test.mp4">
+        </video>
+        <div class="filter"></div>
+    </div>
+   
+
+
+    <div class="core">
+        <div class="container">
+            <div id="sidebar" class="c">
+
+                <div class="usercontainer"> 
+                    <div class="img"> <img src="{% static 'ss.png' %}" alt=""></div>
+                    {% if cu.is_superuser%}
+                    <div class="user"> {{cu.username}} : admin </div>
+                    {% else %}
+                    <div class="user"> {{cu.username}}  </div>
+                    {% endif %}
+ 
+                </div>
+                <div class="ticketstatus">
+                    <div class="totale"><img src="{% static 'ticket.png' %}" alt=""> {{totaleusertickets}} requests</div>
+                    <div class="statut"><img src="{% static 'accept.png' %}" alt="">{{treatedtickets}}  treated requests</div>
+                    <div class="statut"><img src="{% static 'clock.png' %}" alt=""> {{pendingtickets}}  treated requests</div>
+                    
+
+
+                </div> 
+                {% if cu.is_superuser %}
+                <div class="ticketstatus">
+                    <div class="statut" id="ss"><img src="{% static 'right-arrow.png' %}" alt="">Show Tickets</div>
+                    <div class="statut" ><img src="{% static 'right-arrow.png' %}" alt=""> <form action="{% url 'signup' %}" > {% csrf_token %}  <button>Create new user</button> </form></div>
+                </div>                
+                {% else %}
+                <div class="ticketstatus">
+                    <div class="statut" id="ss"><img src="{% static 'right-arrow.png' %}" alt="">Show your tickets</div>
+                    <div class="statut" id="hh"><img src="{% static 'right-arrow.png' %}" alt="">Create new ticket</div>
+                </div>
+                {% endif %}
+                <form action="{% url 'logoutuser' %}" method="post">
+                    {% csrf_token %}
+                    <button class="logout" type="submit">Logout</button>
+                </form>
+
+            </div>
+            <div id="cont1" class="c">
+                <div class="tickets" id="show">
+                    {% if empty %}
+                    <div class="empty"> You have No tickets Yet</div>
+
+
+                    {% else %}
+                    
+                    {%for object in objects %}
+                    <div class="showtickets">
+                        <div class="name">{{object.1}}</div>
+                       <div class="title">{{object.0.title}}</div>
+                       <div class="date">{{object.0.created_date}}</div>
+                  
+                           <form class="deleteform" action="{% url 'delete_post' object.0.id %}">
+                            {% csrf_token %}                          
+                            <button class="delete" type="submit">Delete</button>      
+                           </form>
+                           {% if cu.is_superuser %}
+                           {% if not object.0.treated %}
+                           <form class="deleteform" action="{% url 'treatpost' object.0.id %}">
+                            {% csrf_token %}                          
+                            <button class="treated" type="submit">Mark as Treated</button>      
+                           </form>
+                           {% else %}
+                           <div class="treated"> Already treated</div>
+                           {%endif%}
+                        
+                           {% else %} 
+                           {%if object.0.treated%}
+                            <div class="treated">Treated Ticket</div>
+                           {% endif %} 
+                              
+
+                           {%endif%}
+
+                       <div class="description">
+                        {{object.0.description}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+
+
+                    {% endif %}
+                    
+                    
+                </div>
+                <div class="tickets" id="create">
+                    <form action="" class="createform" method="post">
+                        {% csrf_token %}
+                        <label for="title">Ticket Title</label>
+                        <input name="title" class="title" type="text" placeholder="Ticket Title" required >
+                        <label for="description">Description</label>
+                        <textarea name="message" class="description"  placeholder="Describe your ticket" required></textarea>
+                        <button id="submit" type="submit">Send Your ticket</button>
+                    </form>
+                </div>
+
+            </div>
+         
+            <div id="numberof" class="c">
+                <div class="stats" style="color: aqua;"> {{totaletickets}} Totale Treated Tickets </div>
+                <div class="stats" style="color: rgb(97, 238, 76);">{{ticketsmonth}} Treated Tickets this month</div>
+                <div class="stats" style="color: rgb(216, 238, 76);">{{ticketsweek}} Treated Tickets this week</div>
+                <div class="stats" style="color: rgb(255, 152, 57);">{{ticketsday}} Treated Tickets this day</div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="{% static 'page2.js' %}"></script>
+    
+
+    
+</body>
+</html>

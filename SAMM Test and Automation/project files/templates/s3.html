@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Get your repair ticket</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+body{
+    background-color: #080710;
+}
+
+form{
+    margin-top: 50px;
+    height: 470px;
+    width: 370px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 27px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #da4141;
+}
+button{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-delay: 0.2s;
+
+    transition-timing-function: ease-in-out;
+}
+button:hover{
+    background-color: rgb(50, 230, 104);
+    color: #fdfdfd;
+}
+
+.background-clip{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -8;
+
+
+}
+.filter{
+    position: absolute;
+    height : 100%;
+    width: 100% ;
+    background-color: rgba(3, 5, 41, 0.563);
+    backdrop-filter: blur(1px);
+    z-index: -6;
+
+
+}
+nav{
+    padding:40px;
+    height :80px ;
+    display: flex;
+    background-color: rgba(3, 5, 41, 0.563);
+    justify-content: space-between;
+
+}
+.logoconatiner{
+    padding-left: 16%;
+}
+
+nav img{
+    height:60px;
+    
+
+}
+nav ul {
+    list-style: none;
+    padding-right: 18%;
+ 
+
+}
+li {
+    padding: 14px;
+    
+}
+li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size:x-large;
+}
+input:focus {
+    border-color: aquamarine;
+    border-radius: 10;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+    </style>
+</head>
+<body>
+    
+<nav class="bg-white">
+   
+      <a href="http://www.samm-automation.com/" class="logoconatiner">
+          <img src="http://www.samm-automation.com/img/logo/logo3.png" class="logo" alt="Flowbite Logo" />
+      </a>
+  
+      
+        <ul>
+            <li><a href="">GET YOUR REPAIR TICKET</a></li>
+          </ul>
+     
+    
+</nav>
+  
+    <div class="filter">
+      
+    </div>
+    <video autoplay loop muted plays-inline type = "video/mp4" class="background-clip">
+        <source src="http://www.samm-automation.com/video/samm_test.mp4">
+    </video>
+    
+    <form method="post">
+        {% csrf_token %}
+        <h3>Login Here</h3>
+        
+
+        <label for="username">Username</label>
+        <input name="username" type="text" placeholder="Username" id="username">
+
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="Password" id="password">
+        <label style=" text-align: center; color: red;" for="">Wrong username or password</label>
+
+        <button onclick=" ">Log In</button>
+        
+    </form>
+</body>
+</html>

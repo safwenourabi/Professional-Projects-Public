@@ -1,0 +1,276 @@
+/*background*/ 
+div {
+    background-color: red; /* Color Name */
+    background-color: rgb(0 0 0 / 50%); /* Red, Green, Blue, Alpha Channel */
+    background-color: #FF0000; /* Color Hex Code */
+    background-image: url("../imgs/learn-programming.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left top;
+    background-size: auto;/*cover*/
+}
+/*border*/ 
+
+div {
+    background-color: #DDD;
+    padding: 10px;
+    width: 70%;
+    margin: auto;
+    border-width: 10px;
+    border-color: red;
+    border-style: solid;
+    border: 10px solid red;
+}
+
+
+/*
+
+  Block
+
+  - Take Full Width If No Width
+  - Add Line Break
+  - Respect Padding, Margin, Width, Height
+
+  Inline
+
+  - Do Not Repsepct Width, Height
+  - Respect Padding And Margin [ Just Wight + Left ]
+  - Do Not Add Line Break
+  - Allow Elements Before And After It in The Same Line
+
+  Inline-Block
+
+  - Allow Elements Before And After It in The Same Line
+  - Respect Padding, Margin, Width, Height
+
+*/
+/*overflow*/
+div {
+  width: 150px;
+  height: 150px;
+  background-color: #EEE;
+  margin: 20px auto;
+  border-radius: 6px;
+  overflow: scroll;/*hidden*//*auto*/
+  overflow-x:
+
+}
+/*text sadow*/
+
+div {
+  background-color: #f9f9f9;
+  color: rebeccapurple;
+  text-shadow: 0 0 0 red;/*horzinotal vertical the blurness of the shadow*/
+}
+
+/*spacing*/
+div {
+  background-color: #f9f9f9;
+  word-spacing: 5px;
+  letter-spacing :0.5px;
+  word-break: break-word;/*ki tebda kelma twila w tokhrj m div kima lien par exemple*/
+
+}
+
+/*inhertiance*/
+div p {
+  border: 2px solid;
+  border-color: inherit;
+  padding: inherit;
+}
+/*pseudo classes*/
+.one {
+  background-color: red;
+  color: white;
+}
+.two {
+  background-color: #EEE;
+  width: 100px;
+  height: 100px;
+}
+a {
+  color: green;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+}
+a:visited {
+  color: blue;
+}
+:empty {
+  border: 10px solid red;
+}
+.ch:checked {
+  display: none;
+}
+.in:focus {
+  border-color: red;
+  outline: none
+}
+
+/*pseudo elements */
+
+
+.one span {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+}
+.two::first-letter {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+}
+.three::first-line {
+  font-weight: bold;
+  color: green;
+}
+::selection {
+  background-color: black;
+  color: yellow;
+}
+
+/*transition*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.one {
+  background-color: #EEE;
+  width: 200px;
+  height: 100px;
+  transition-duration: 1s;
+  transition-delay: 0.2s;
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition: all 2s 0.5s linear;
+}
+.one:hover {
+  width: 280px;
+  height: 120px;
+}
+/*
+  CSS Variables
+  - Global Variable
+  - Local Variable
+  var(Variable Name, Fall Back Value)
+*/
+
+:root {
+  --mainColor: blue;
+  --mainPadding: 10px;
+}
+.main {
+  background-color: var(--mainColor, black);
+  color: white;
+  padding: calc(20px + var(--mainPadding));
+}
+h2 {
+  color: var(--mainColor);
+  background-color: #eee;
+  padding: var(--mainPadding);
+}
+p {
+  color: var(--mainColor);
+  border: 2px solid var(--mainColor);
+  padding: var(--mainPadding);
+}
+a:hover {
+  color: var(--mainColor);
+}
+.local {
+  --mainColor: black;
+  background-color: var(--mainColor);
+  color: white;
+}
+
+/*
+  Flexible Box
+  For Parent
+  - display: flex => To Start Flexible Box
+  - flex-direction: row => Default Value
+  - flex-wrap: nowrap => Default Value
+  - flex-flow: [Flex-Direction] + [Flex-Wrap]
+*/
+
+/*
+  Flexible Box
+  For Parent
+  - display: flex => To Start Flexible Box
+  - flex-direction: row => Default Value
+  - flex-wrap: nowrap => Default Value
+  - flex-flow: [Flex-Direction] + [Flex-Wrap]
+  ---
+  - justify-content: flex-start => Default Value
+  - align-items: stretch => Default Value
+  - align-content: stretch => Default Value
+*/
+
+
+
+
+/*
+  Gradients
+  linear-gradient(Direction || Angle, Color Stop 1, Color Stop 2, ....)
+*/
+
+div {
+  width: 400px;
+  height: 200px;
+  background-color: #eee;
+  margin: 20px auto;
+  position: relative;
+  padding: 10px;
+}
+div:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  background-color: red;
+  height: 10px;
+  background-image: linear-gradient(
+    to right,
+    #2980b9 20%,
+    #27ae60 20%,
+    #27ae60 40%,
+    #d35400 40%,
+    #d35400 60%,
+    #8e44ad 60%,
+    #8e44ad 80%,
+    #c0392b 80%
+  );
+} 
+/*
+  Grid
+  Parent
+  - display: grid | inline-grid
+  - grid-template-columns: [Number Of Columns In] => [Px, %, Auto, Fraction, Repeat, Mix]
+  - grid-template-rows: [Number Of Rows In] => [Px, %, Auto, Fraction, Repeat, Mix]
+  - gap: [Row Gap] [Column Gap]
+*/
+
+* {
+  box-sizing: border-box;
+}
+.parent {
+  margin: 20px auto;
+  width: 800px;
+  height: 500px;
+  background-color: #ddd;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  /* row-gap: 10px;
+  column-gap: 10px; */
+  gap: 10px 10px;
+
+}
+  
